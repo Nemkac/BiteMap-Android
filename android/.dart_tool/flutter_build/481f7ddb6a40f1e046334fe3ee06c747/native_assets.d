@@ -1,1 +1,0 @@
- C:\\Users\\Nemanja\\Documents\\GitHub\\BiteMap-Android\\android\\.dart_tool\\flutter_build\\481f7ddb6a40f1e046334fe3ee06c747\\native_assets.yaml: 
