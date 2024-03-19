@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:test_app/pages/settings_page.dart';
+import 'package:test_app/pages/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,28 +38,6 @@ class EstablishmentCard extends StatelessWidget {
   }
 }
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-    );
-  }
-}
-
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-    );
-  }
-}
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -68,7 +48,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    int currentIndex = 1;
+    int currentIndex = 0;
 
     return Scaffold(
       appBar: AppBar(
@@ -78,7 +58,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.redAccent,
       ),
       body: Center(
-        child: currentIndex == 1 ? SizedBox(
+        child: currentIndex == 0 ? SizedBox(
           width: double.infinity,
           height: double.infinity,
           child: Column(
@@ -102,22 +82,29 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: const Text('Login'),
               ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.redAccent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0)
+                  )
+                ),
+                onPressed: (){
+                  Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (BuildContext context){
+                      return const SettingsPage();
+                    }));
+                },
+                child: const Text('Settings'),
+              ),
             ],
           ),
-        ) : currentIndex == 2 ? const SettingsPage() : Container(
+        ) : Container(
           color: Colors.black38,
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.arrow_back,
-              size: 34, 
-              //color: Color.fromRGBO(245, 246, 250, 1)
-            ),
-            label: 'Back',
-          ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
